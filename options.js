@@ -43,13 +43,13 @@ function createTestLink(username, reponame) {
     return "http://github.com/" + username + "/" + reponame + "/issues/1";
 }
 
-function restoreURL() {
+function restoreInput() {
     username = localStorage['username'] ? localStorage['username'] : defaultUsername;
     reponame = localStorage['reponame'] ? localStorage['reponame'] : defaultReponame;
     $('#path2repo').val(username+"/"+reponame);
 }
 
-function saveURL() {
+function saveInput() {
     userInput = $('#path2repo').val();
     trimmedInput = trimSlash(userInput);
     //localStorage['path2repo'] = trimmedInput;
@@ -58,27 +58,36 @@ function saveURL() {
     saveToLocalStorage(userInput);
 }
 
-function checkURL() {
+function checkInput() {
     //userInput = localStorage['userInput'];
     //trimmedInput = trimSlash(userInput);
     
-    $('#checkURL').html("<a href='" +
+    $('#testLink').html("<a href='" +
 			createTestLink(localStorage['username'],localStorage['reponame'])+
 			"'>#1</a>");
     $().toastmessage( 'showNoticeToast', 'Add a test link to "#1".' );
 }
 
-function clearURL() {
+function clearInput() {
     localStorage.clear();
 }
 
 var defaultUsername = "yasulab";
 var defaultReponame = "lingr2github_issue";
 
-$("#saveBtn").click(function(){ saveURL(); });
-$("#checkBtn").click(function(){ checkURL(); });
-$("#clearBtn").click(function(){ clearURL(); });
+$("#saveBtn").click(function(){ saveInput(); });
+$("#checkBtn").click(function(){ checkInput(); });
+$("#clearBtn").click(function(){ clearInput(); });
 
+// restore from local strage when opened
 $(document).ready(function() {
-	restoreURL();
+	restoreInput();
+
+	// enter to save
+	$("#path2repo").keypress(function (ev) {
+		if ((ev.which && ev.which === 13) ||
+		    (ev.keyCode && ev.keyCode === 13)) {
+		    saveInput();
+		}
+	    });
     });
