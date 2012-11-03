@@ -6,7 +6,7 @@ chrome.extension.sendRequest( {
         action : "getValues" , 
 	    args   : [{ 
 		"username" : "" ,
-		"reponame" : ""
+		    "reponame" : ""
 		    }]
 	    } , function( response ){
         option = response.values ;
@@ -24,12 +24,20 @@ function main(){
     var result = '';
     // need to wait for rendering #decorated_text by Lingr.
     $(document).delay(1500).queue(function(){
-	    $(".decorated p").each(function() {
-		    result = $(this).html();
-		    result = result.replace(/#([0-9]+)/g, "<a href='"+baseUrl+"$1'>#$1</a>");
-		    $(this).html( result );
-		});
-
+	    if(baseUrl ==　"https://github.com/yasulab/lingr2github_issue/issues/"){
+		$(".decorated p").each(function() {
+			result = $(this).html();
+			result = result.replace(/#([0-9]+)/g, "<a href='"+baseUrl+"1'>#$1</a>");
+			$(this).html( result );
+		    });
+	    }else{
+		$(".decorated p").each(function() {
+			result = $(this).html();
+			result = result.replace(/#([0-9]+)/g, "<a href='"+baseUrl+"$1'>#$1</a>");
+			$(this).html( result );
+		    });
+	    }
+	
 	    // start replacing after #decorated_text was rendered.
 	    $(document).dequeue();
 	});

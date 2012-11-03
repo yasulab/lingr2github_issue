@@ -1,3 +1,14 @@
+if (!window.localStorage.getItem('hasSeenIntro')) {
+    window.localStorage.setItem('hasSeenIntro', 'yep');
+    chrome.tabs.create({
+	    url: '/options.html'
+		});
+}
+
+function onInstall() {
+    console.log("Extension Installed");
+}
+
 //background.js
 window.onload = init
 
