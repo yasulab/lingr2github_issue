@@ -2,7 +2,7 @@
   "name": "Lingr to GitHub Issue",
   "version": "0.1",
   "manifest_version": 2,
-  "description": "Replace hash-tag-attached numbers like '#210' with a link to the GitHub Issue of a given GitHub repository.",
+  "description": "Add a GitHub Issue link to the numbers with a hash tag like '#210' in Lingr.",
   "icons": {
   	   "16": "icon16.png",
            "48": "icon48.png",
