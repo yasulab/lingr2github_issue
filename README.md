@@ -3,7 +3,7 @@
 ![Screenshot](https://raw.github.com/yasulab/lingr2github_issue/master/ss-lingr2github_issue.png)
 
 ## Description
-Replace hash-tag-attached numbers like '#210' with a link to the GitHub Issue of a given GitHub repository.
+Lingr to GitHub Issue enables you to add a link of given GitHub Issue to the numbers with a hashtag like '#210' via Google Chrome Extension.
 
 
 ## How to Install
